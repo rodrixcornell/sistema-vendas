@@ -230,7 +230,7 @@ return [
     |
     */
 
-    'menu' => [
+    /*'menu' => [
         [
             'text' => 'search',
             'search' => true,
@@ -312,6 +312,50 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
+        ],
+    ],*/
+    'menu' => [
+        [
+            'text'        => 'Home',
+            'url'         => 'home',
+            'icon'        => 'fas fa-home',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Fabricantes',
+            'url'         => 'fabricantes',
+            'icon'        => 'fas fa-industry',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Produtos',
+            'url'         => 'produtos',
+            'icon'        => 'fab fa-product-hunt',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Clientes',
+            'url'         => 'clientes',
+            'icon'        => 'fas fa-user-friends',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Vendas',
+            'url'         => 'vendas',
+            'icon'        => 'fas fa-shopping-cart',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Usuários',
+            'url'         => 'users',
+            'icon'        => 'fas fa-users',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
         ],
     ],
 
