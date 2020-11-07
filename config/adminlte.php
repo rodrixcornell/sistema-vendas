@@ -354,8 +354,17 @@ return [
             'text'        => 'Usuários',
             'url'         => 'users',
             'icon'        => 'fas fa-users',
+            'active'      => [
+                'users*',
+            ]
             // 'label'       => 4,
             // 'label_color' => 'success',
+            // 'submenu' => [
+            //     [
+            //         'text' => 'Novo Usuário',
+            //         'url'  => 'users/create',
+            //     ],
+            // ],
         ],
     ],
 
