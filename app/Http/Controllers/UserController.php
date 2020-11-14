@@ -40,7 +40,8 @@ class UserController extends Controller
         // dd($request);
         User::Create($request->all());
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')
+        ->withSucesso('Salvo com sucesso!');
     }
 
     /**

@@ -71,4 +71,13 @@
 @stop
 
 @section('js')
+<script>
+    // Swal.fire({
+        // text: 'Mensagem',
+        // icon: 'error',
+        // icon: 'success',
+        // timer: 2000,
+        // timerProgressBar: true
+    // })
+</script>
 @stop
