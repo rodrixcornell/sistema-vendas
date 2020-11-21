@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Fabricante;
+use Collective\Html\FormFacade;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -22,8 +23,11 @@ class FabricanteDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function ($fabricante) {
+                $roteExcluir = route('fabricantes.destroy', $fabricante);
                 $action = link_to_route('fabricantes.edit', 'Editar', $fabricante, ['class' => 'btn btn-primary btn-sm']);
-                $action .= link_to_route('fabricantes.show', 'Excluir', $fabricante, ['class' => 'btn btn-danger btn-sm ml-1']);
+                // $action .= link_to_route('fabricantes.show', 'Show', $fabricante, ['class' => 'btn btn-danger btn-sm ml-1']);
+                // $action .= link_to_route('fabricantes.destroy', 'Excluir', $fabricante, ['class' => 'btn btn-danger btn-sm ml-1']);
+                $action .= FormFacade::button('Excluir', ['class' => 'btn btn-danger btn-sm ml-1', 'onclick' => 'excluir("' . $roteExcluir . '")']);
 
                 return $action;
             });

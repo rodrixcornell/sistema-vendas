@@ -493,6 +493,17 @@ return [
                 ],
             ],
         ],
+        'Axios' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//unpkg.com/axios/dist/axios.min.js',
+                ],
+            ],
+        ],
+
     ],
 
     /*
