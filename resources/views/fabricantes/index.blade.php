@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuários')
+@section('title', 'Fabricantes')
 
 @section('content_header')
-<h1>Usuários</h1>
+<h1>Fabricantes</h1>
 @stop
 
 @section('content')
-{{-- <a href="{{ route('users.create') }}">Novo Usuário</a> --}}
 <div class="card">
     <div class="card-header">
-        Bem vindo ao Usuários.
+        Bem vindo ao Fabricantes.
     </div>
     <div class="card-body">
         {!! $dataTable->table() !!}
     </div>
+    <div class="card-footer"></div>
 </div>
 @stop
 
