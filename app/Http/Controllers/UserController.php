@@ -43,9 +43,7 @@ class UserController extends Controller
         // User::Create($request->all());
         $user = UserService::store($request->all());
 
-        if (!$user) {
-            return redirect()->route('users.index')->withErro('Ocorreu um erro ao salvar');
-        }
+        if (!$user) return redirect()->route('users.index')->withErro('Ocorreu um erro ao salvar');
         return redirect()->route('users.index')->withSucesso('Salvo com sucesso');
     }
 
@@ -82,11 +80,9 @@ class UserController extends Controller
     {
         // dd($request);
         // User::Create($request->all());
-        $user = UserService::update($request->all());
+        $user = UserService::update($request->all(), $user);
 
-        if (!$user) {
-            return redirect()->route('users.index')->withErro('Ocorreu um erro ao salvar');
-        }
+        if (!$user) return redirect()->route('users.edit', $user)->withErro('Ocorreu um erro ao salvar');
         return redirect()->route('users.index')->withSucesso('Salvo com sucesso');
     }
 
@@ -98,6 +94,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        dd($user);
+        // dd($user);
+        $user = UserService::destroy($user);
+
+        if (!$user) return redirect()->route('users.edit', $user)->withErro('Ocorreu um erro ao excluir');
+        return redirect()->route('users.index')->withSucesso('Excluido com sucesso');
     }
 }

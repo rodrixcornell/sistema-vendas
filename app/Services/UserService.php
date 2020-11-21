@@ -18,10 +18,20 @@ class UserService
         }
     }
 
-    public static function update(array $request)
+    public static function update(array $request, User $user)
     {
         try {
-            return User::update($request);
+            return $user->update($request);
+        } catch (Throwable $th) {
+            Log::error($th->getMessage());
+            return null;
+        }
+    }
+
+    public static function destroy(User $user)
+    {
+        try {
+            return $user->delete();
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             return null;

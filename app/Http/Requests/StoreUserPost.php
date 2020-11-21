@@ -27,7 +27,7 @@ class StoreUserPost extends FormRequest
             'name' => 'required|max:100',
             // 'telefone' => 'required|max:20',
             // 'cpf' => 'digits:11|nullable',
-            'email' => 'required|max:100|email|unique:users,email',
+            'email' => 'required|max:100|email|unique:users,email,' . $this->user->id,
             'password' => 'required|min:8',
         ];
     }
