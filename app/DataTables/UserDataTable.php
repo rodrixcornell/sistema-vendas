@@ -21,7 +21,13 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', "<a href='#' class='btn btn-primary'>user.action</a>");
+            // ->addColumn('action', "<a href='#' class='btn btn-primary'>user.action</a>");
+            ->addColumn('action', function ($user) {
+                $action = link_to_route('users.edit', 'Editar', $user, ['class' => 'btn btn-primary btn-sm']);
+
+                // return $user->type;
+                return $action;
+            });
     }
 
     /**

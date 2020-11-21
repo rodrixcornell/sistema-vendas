@@ -13,7 +13,11 @@
 
       <div class="card card-primary">
 
-        {!! Form::open(['route' => 'users.store']) !!}
+        @if (!isset($user))
+            {!! Form::open(['route' => 'users.store']) !!}
+        @else
+            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
+        @endif
 
             <div class="card-header"></div>
 
@@ -21,9 +25,9 @@
                 <div class="form-group">
                     {!! Form::label('name', 'Nome') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                
+
                     @error('name')
-                        <small class="form-text text-danger">{{ $message }}</small>        
+                        <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
 
@@ -32,25 +36,24 @@
                     {!! Form::email('email', null, ['class' => 'form-control']) !!}
 
                     @error('email')
-                        <small class="form-text text-danger">{{ $message }}</small>        
+                        <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('password', 'Senha') !!}
                     {!! Form::password('password', ['class' => 'form-control']) !!}
-                    
                     @error('password')
-                        <small class="form-text text-danger">{{ $message }}</small>        
+                        <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     {!! Form::label('type', 'Tipo de Usuário') !!}
-                    {!! Form::select('type', [0 => 'Vendedor', 1 => 'Administrador'], 0, ['class' => 'form-control']) !!}
-                    
+                    {!! Form::select('type', [0 => 'Vendedor', 1 => 'Administrador'], null, ['class' => 'form-control']) !!}
+
                     @error('type')
-                        <small class="form-text text-danger">{{ $message }}</small>        
+                        <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
@@ -59,7 +62,7 @@
                 {!! link_to(route('users.index'), 'Cancelar', ['class' => 'btn btn-secondary']) !!}
                 {!! Form::submit('Salvar', ['class' => 'btn btn-primary']); !!}
             </div>
-        
+
         {!! Form::close() !!}
 
         </div>

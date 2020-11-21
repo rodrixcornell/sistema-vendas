@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.forms', compact('user'));
     }
 
     /**
@@ -78,9 +78,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(StoreUserPost $request, User $user)
     {
-        //
+        
     }
 
     /**
