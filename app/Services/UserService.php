@@ -11,7 +11,17 @@ class UserService
     public static function store(array $request)
     {
         try {
-            return User::Create($request);
+            return User::create($request);
+        } catch (Throwable $th) {
+            Log::error($th->getMessage());
+            return null;
+        }
+    }
+
+    public static function update(array $request)
+    {
+        try {
+            return User::update($request);
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             return null;

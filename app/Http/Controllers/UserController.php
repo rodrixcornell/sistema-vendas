@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -80,7 +80,14 @@ class UserController extends Controller
      */
     public function update(StoreUserPost $request, User $user)
     {
-        
+        // dd($request);
+        // User::Create($request->all());
+        $user = UserService::update($request->all());
+
+        if (!$user) {
+            return redirect()->route('users.index')->withErro('Ocorreu um erro ao salvar');
+        }
+        return redirect()->route('users.index')->withSucesso('Salvo com sucesso');
     }
 
     /**
@@ -91,6 +98,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        dd($user);
     }
 }

@@ -24,6 +24,7 @@ class UserDataTable extends DataTable
             // ->addColumn('action', "<a href='#' class='btn btn-primary'>user.action</a>");
             ->addColumn('action', function ($user) {
                 $action = link_to_route('users.edit', 'Editar', $user, ['class' => 'btn btn-primary btn-sm']);
+                $action .= link_to_route('users.show', 'Excluir', $user, ['class' => 'btn btn-danger btn-sm ml-1']);
 
                 // return $user->type;
                 return $action;
@@ -71,16 +72,17 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(120)
+                  ->title('Ações')
                   ->addClass('text-center'),
+            Column::make('id')->title('#'),
+            Column::make('name')->title('Nome'),
+            Column::make('email')->title('Email'),
+            Column::make('created_at')->title('Criado em'),
+            Column::make('updated_at')->title('Atualizado em'),
         ];
     }
 

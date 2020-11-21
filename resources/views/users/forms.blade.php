@@ -7,66 +7,59 @@
 @stop
 
 @section('content')
-<div class="row">
+<div class="card">
 
-    <div class="col-md-12">
+    @if (!isset($user))
+        {!! Form::open(['route' => 'users.store']) !!}
+    @else
+        {!! Form::model($user, ['route' => ['users.update', $user], 'method' => 'put']) !!}
+    @endif
 
-      <div class="card card-primary">
+    <div class="card-header"></div>
 
-        @if (!isset($user))
-            {!! Form::open(['route' => 'users.store']) !!}
-        @else
-            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
-        @endif
+    <div class="card-body">
+        <div class="form-group">
+            {!! Form::label('name', 'Nome') !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-            <div class="card-header"></div>
+            @error('name')
+                <small class="form-text text-danger">{{ $message }}</small>
+            @enderror
+        </div>
 
-            <div class="card-body">
-                <div class="form-group">
-                    {!! Form::label('name', 'Nome') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        <div class="form-group">
+            {!! Form::label('email', 'Email') !!}
+            {!! Form::email('email', null, ['class' => 'form-control']) !!}
 
-                    @error('name')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
+            @error('email')
+                <small class="form-text text-danger">{{ $message }}</small>
+            @enderror
+        </div>
 
-                <div class="form-group">
-                    {!! Form::label('email', 'Email') !!}
-                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+        <div class="form-group">
+            {!! Form::label('password', 'Senha') !!}
+            {!! Form::password('password', ['class' => 'form-control']) !!}
+            @error('password')
+                <small class="form-text text-danger">{{ $message }}</small>
+            @enderror
+        </div>
 
-                    @error('email')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
+        <div class="form-group">
+            {!! Form::label('type', 'Tipo de Usuário') !!}
+            {!! Form::select('type', [0 => 'Vendedor', 1 => 'Administrador'], null, ['class' => 'form-control']) !!}
 
-                <div class="form-group">
-                    {!! Form::label('password', 'Senha') !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
-                    @error('password')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('type', 'Tipo de Usuário') !!}
-                    {!! Form::select('type', [0 => 'Vendedor', 1 => 'Administrador'], null, ['class' => 'form-control']) !!}
-
-                    @error('type')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="card-footer">
-                {!! link_to(route('users.index'), 'Cancelar', ['class' => 'btn btn-secondary']) !!}
-                {!! Form::submit('Salvar', ['class' => 'btn btn-primary']); !!}
-            </div>
-
-        {!! Form::close() !!}
-
+            @error('type')
+                <small class="form-text text-danger">{{ $message }}</small>
+            @enderror
         </div>
     </div>
+
+    <div class="card-footer">
+        {!! link_to(route('users.index'), 'Cancelar', ['class' => 'btn btn-secondary']) !!}
+        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']); !!}
+    </div>
+
+    {!! Form::close() !!}
 </div>
 @stop
 
