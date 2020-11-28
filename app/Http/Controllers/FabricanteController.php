@@ -97,4 +97,9 @@ class FabricanteController extends Controller
         // if (!$fabricante) return redirect()->route('fabricantes.edit', $fabricante)->withErro('Ocorreu um erro ao excluir');
         // return redirect()->route('fabricantes.index')->withSucesso('Excluido com sucesso');
     }
+
+    public function fabricantesSelect(Request $request)
+    {
+        return FabricanteService::fabricantesSelect($request->all());
+    }
 }

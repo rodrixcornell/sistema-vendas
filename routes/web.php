@@ -33,4 +33,5 @@ Route::group([
         'fabricantes' => 'FabricanteController',
         'produtos' => 'ProdutoController',
     ]);
+    Route::get('fabricantes-select', 'FabricanteController@fabricantesSelect')->name('fabricantes.select');
 });

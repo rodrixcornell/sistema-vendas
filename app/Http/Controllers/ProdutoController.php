@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProdutoDataTable;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,9 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProdutoDataTable $produtoDataTable)
     {
-        //
+        return $produtoDataTable->render('produtos.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('produtos.forms');
     }
 
     /**
@@ -35,7 +36,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -44,7 +45,7 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produtos  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function show(Produtos $produtos)
+    public function show(Produto $produtos)
     {
         //
     }
@@ -55,7 +56,7 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produtos  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produtos $produtos)
+    public function edit(Produto $produtos)
     {
         //
     }
@@ -67,7 +68,7 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produtos  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produtos $produtos)
+    public function update(Request $request, Produto $produtos)
     {
         //
     }
@@ -78,7 +79,7 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produtos  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produtos $produtos)
+    public function destroy(Produto $produtos)
     {
         //
     }
