@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Fabricante;
+use App\Models\Fabricante;
 use Throwable;
 use Illuminate\Support\Facades\Log;
 

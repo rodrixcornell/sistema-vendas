@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,4 +14,9 @@ class Fabricante extends Model
         'created_at' => 'datetime:d/m/Y H:m:s',
         'updated_at' => 'datetime:d/m/Y H:m:s',
     ];
+
+    public function produtos()
+    {
+        return $this->hasMany(Produtos::class);
+    }
 }

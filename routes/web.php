@@ -31,5 +31,6 @@ Route::group([
     Route::resources([
         'users' => 'UserController',
         'fabricantes' => 'FabricanteController',
+        'produtos' => 'ProdutoController',
     ]);
 });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\FabricanteDataTable;
-use App\Fabricante;
+use App\Models\Fabricante;
 use App\Http\Requests\StoreFabricantePost;
 use App\Services\FabricanteService;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class FabricanteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Fabricante  $fabricante
+     * @param  \App\Models\Fabricante  $fabricante
      * @return \Illuminate\Http\Response
      */
     public function show(Fabricante $fabricante)
@@ -60,7 +60,7 @@ class FabricanteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Fabricante  $fabricante
+     * @param  \App\Models\Fabricante  $fabricante
      * @return \Illuminate\Http\Response
      */
     public function edit(Fabricante $fabricante)
@@ -72,7 +72,7 @@ class FabricanteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fabricante  $fabricante
+     * @param  \App\Models\Fabricante  $fabricante
      * @return \Illuminate\Http\Response
      */
     public function update(StoreFabricantePost $request, Fabricante $fabricante)
@@ -86,7 +86,7 @@ class FabricanteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Fabricante  $fabricante
+     * @param  \App\Models\Fabricante  $fabricante
      * @return \Illuminate\Http\Response
      */
     public function destroy(Fabricante $fabricante)

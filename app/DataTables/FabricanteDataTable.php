@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Fabricante;
+use App\Models\Fabricante;
 use Collective\Html\FormFacade;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -36,7 +36,7 @@ class FabricanteDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Fabricante $model
+     * @param \App\Models\Fabricante $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Fabricante $model)
