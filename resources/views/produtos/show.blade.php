@@ -1,24 +1,24 @@
 @extends('adminlte::page')
 
-@section('title', 'Fabricante')
+@section('title', 'Produto')
 
 @section('content_header')
-<h1>Fabricante</h1>
+<h1>Produto</h1>
 @stop
 
 @section('content')
 <div class="card">
-    {!! Form::model($fabricante, ['route' => ['fabricantes.destroy', $fabricante], 'method' => 'delete']) !!}
+    {!! Form::model($produto, ['route' => ['produtos.destroy', $produto], 'method' => 'delete']) !!}
 
     <div class="card-header"></div>
 
     <div class="card-body">
-        <h1>Deseja mesmo excluir este fabricante?</h1>
-        <h2>{{ $fabricante->nome }}</h2>
+        <h1>Deseja mesmo excluir este produto?</h1>
+        <h2>{{ $produto->nome }}</h2>
     </div>
 
     <div class="card-footer">
-        {!! link_to(route('fabricantes.index'), 'Cancelar', ['class' => 'btn btn-secondary']) !!}
+        {!! link_to(route('produtos.index'), 'Cancelar', ['class' => 'btn btn-secondary']) !!}
         {!! Form::submit('Excluir', ['class' => 'btn btn-danger']); !!}
     </div>
 

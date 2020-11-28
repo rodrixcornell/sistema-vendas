@@ -75,7 +75,20 @@
 
 @section('js')
 <script>
+    var dados = []
+
+    @isset($produto)
+    var selecionado = {
+        id: {{ $produto->fabricante->id }},
+        text: '{{ $produto->fabricante->nome }}',
+        selected: true
+    }
+
+    dados.push(selecionado)
+    @endisset
+
     $('#fabricante_id').select2({
+        data: dados,
         ajax: {
             // url: '//sistema-vendas.net/fabricante/search',
             url: '{{ route('fabricantes.select') }}',

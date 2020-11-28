@@ -15,6 +15,16 @@ class Produto extends Model
         'updated_at' => 'datetime:d/m/Y H:m:s',
     ];
 
+    public function getPrecoAttribute($value)
+    {
+        // $this->attributes['preco'] = Hash::make($value);
+    }
+
+    public function setPrecoAttribute($value)
+    {
+        // $this->attributes['preco'] = Hash::make($value);
+    }
+
     public function fabricante()
     {
         return $this->belongsTo(Fabricante::class);

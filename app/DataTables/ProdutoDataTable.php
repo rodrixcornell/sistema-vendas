@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Produto;
+use Collective\Html\FormFacade;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,7 +22,15 @@ class ProdutoDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'produto.action');
+            ->addColumn('action', function ($produto) {
+                $roteExcluir = route('produtos.destroy', $produto);
+                $action = link_to_route('produtos.edit', 'Editar', $produto, ['class' => 'btn btn-primary btn-sm']);
+                // $action .= link_to_route('produtos.show', 'Show', $produto, ['class' => 'btn btn-danger btn-sm ml-1']);
+                // $action .= link_to_route('produtos.destroy', 'Excluir', $produto, ['class' => 'btn btn-danger btn-sm ml-1']);
+                $action .= FormFacade::button('Excluir', ['class' => 'btn btn-danger btn-sm ml-1', 'onclick' => 'excluir("' . $roteExcluir . '")']);
+
+                return $action;
+            });
     }
 
     /**
@@ -49,7 +58,7 @@ class ProdutoDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
-                        Button::make('create')->text('Novo Fabricante'),
+                        Button::make('create')->text('Novo Produto'),
                         Button::make('export')->text('Exportar'),
                         // Button::make('print'),
                         // Button::make('reset'),
