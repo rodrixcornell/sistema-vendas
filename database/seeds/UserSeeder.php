@@ -20,11 +20,11 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Administrador Padrão',
-                'password' => Hash::make('admin'),
+                'password' => 'admnin',
+                // 'password' => Hash::make('password'),
                 'remember_token' => Str::random(10),
                 'type' => '1',
             ],
         );
-        
     }
 }
