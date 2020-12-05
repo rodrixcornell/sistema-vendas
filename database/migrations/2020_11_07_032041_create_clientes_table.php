@@ -18,13 +18,12 @@ class CreateClientesTable extends Migration
 
 			$table->string('nome');
 			$table->string('telefone');
-			$table->string('email');
-			$table->string('cpf');
-			$table->string('cep');
-			$table->string('logradouro');
-			$table->string('bairro');
-			$table->string('localidade');
-
+			$table->string('email')->nullable();
+			$table->string('cpf')->nullable();
+			$table->string('cep')->nullable();
+			$table->string('logradouro')->nullable();
+			$table->string('bairro')->nullable();
+			$table->string('localidade')->nullable();
 
 			$table->timestamps();
 		});

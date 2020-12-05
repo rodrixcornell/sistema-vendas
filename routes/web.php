@@ -32,6 +32,7 @@ Route::group([
         'users' => 'UserController',
         'fabricantes' => 'FabricanteController',
         'produtos' => 'ProdutoController',
+        'clientes' => 'ClienteController',
     ]);
     Route::get('fabricantes-select', 'FabricanteController@fabricantesSelect')->name('fabricantes.select');
 });
