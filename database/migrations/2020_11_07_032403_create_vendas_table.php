@@ -17,11 +17,11 @@ class CreateVendasTable extends Migration
 			$table->id();
 
 			$table->integer('forma_pagamento');
-			$table->text('observacao');
-			$table->decimal('desconto');
-			$table->decimal('acrecimo');
-			$table->decimal('total');
-			$table->foreignId('client_id');
+			$table->text('observacao')->nullable();
+			$table->decimal('desconto', 10, 2)->default(0);
+			$table->decimal('acrescimo', 10, 2)->default(0);
+			$table->decimal('total', 10, 2);
+			$table->foreignId('cliente_id')->constrained();
 
 			$table->timestamps();
 		});

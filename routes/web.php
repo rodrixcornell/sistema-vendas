@@ -33,6 +33,9 @@ Route::group([
         'fabricantes' => 'FabricanteController',
         'produtos' => 'ProdutoController',
         'clientes' => 'ClienteController',
+        'vendas' => 'VendaController',
     ]);
     Route::get('fabricantes-select', 'FabricanteController@fabricantesSelect')->name('fabricantes.select');
+    Route::get('produtos-select', 'ProdutoController@produtosSelect')->name('produtos.select');
+    Route::get('clientes-select', 'ClienteController@clientesSelect')->name('clientes.select');
 });

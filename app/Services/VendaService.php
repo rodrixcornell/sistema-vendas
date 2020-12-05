@@ -2,52 +2,52 @@
 
 namespace App\Services;
 
-use App\Models\Produto;
+use App\Models\Venda;
 use Throwable;
 use Illuminate\Support\Facades\Log;
 
-class ProdutoService
+class VendaService
 {
     public static function store(array $request)
     {
         try {
-            return Produto::create($request);
+            return Venda::create($request);
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             return null;
         }
     }
 
-    public static function update(array $request, Produto $produto)
+    public static function update(array $request, Venda $venda)
     {
         try {
-            return $produto->update($request);
+            return $venda->update($request);
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             return null;
         }
     }
 
-    public static function destroy(Produto $produto)
+    public static function destroy(Venda $venda)
     {
         try {
-            return $produto->delete();
+            return $venda->delete();
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             return null;
         }
     }
 
-    public static function ProdutosSelect($request)
+    public static function VendasSelect($request)
     {
         if (isset($request['pesquisa'])) {
-            return Produto::select('id', 'descricao as text')
-                            ->where('descricao', 'like', "%" . $request['pesquisa'] . "%")
+            return Venda::select('id', 'nome as text')
+                            ->where('nome', 'like', "%" . $request['pesquisa'] . "%")
                             ->limit(10)
                             ->get();
         }
 
-        return Produto::select('id', 'descricao as text')
+        return Venda::select('id', 'nome as text')
                         ->limit(10)
                         ->get();
     }

@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Clientes')
+@section('title', 'Vendas')
 
 @section('content_header')
-<h1>Clientes</h1>
+<h1>Vendas</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        Bem vindo ao Clientes.
+        Bem vindo ao Vendas.
     </div>
     <div class="card-body">
         {!! $dataTable->table() !!}

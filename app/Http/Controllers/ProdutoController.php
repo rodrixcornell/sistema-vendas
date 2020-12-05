@@ -52,7 +52,8 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        return view('produtos.show', compact('produto'));
+        // return view('produtos.show', compact('produto'));
+        return response($produto, 200);
     }
 
     /**
@@ -94,5 +95,10 @@ class ProdutoController extends Controller
         return response($exclusao, $exclusao ? 200 : 400);
         // if (!$produto) return redirect()->route('produtos.edit', $produto)->withErro('Ocorreu um erro ao excluir');
         // return redirect()->route('produtos.index')->withSucesso('Excluido com sucesso');
+    }
+
+    public function produtosSelect(Request $request)
+    {
+        return ProdutoService::produtosSelect($request->all());
     }
 }

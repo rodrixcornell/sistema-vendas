@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Produto;
+use App\Models\Venda;
 use Collective\Html\FormFacade;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -10,7 +10,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProdutoDataTable extends DataTable
+class VendaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,11 +22,11 @@ class ProdutoDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', function ($produto) {
-                $roteExcluir = route('produtos.destroy', $produto);
-                $action = link_to_route('produtos.edit', 'Editar', $produto, ['class' => 'btn btn-primary btn-sm']);
-                // $action .= link_to_route('produtos.show', 'Show', $produto, ['class' => 'btn btn-danger btn-sm ml-1']);
-                // $action .= link_to_route('produtos.destroy', 'Excluir', $produto, ['class' => 'btn btn-danger btn-sm ml-1']);
+            ->addColumn('action', function ($venda) {
+                $roteExcluir = route('vendas.destroy', $venda);
+                $action = link_to_route('vendas.edit', 'Editar', $venda, ['class' => 'btn btn-primary btn-sm']);
+                // $action .= link_to_route('vendas.show', 'Show', $venda, ['class' => 'btn btn-danger btn-sm ml-1']);
+                // $action .= link_to_route('vendas.destroy', 'Excluir', $venda, ['class' => 'btn btn-danger btn-sm ml-1']);
                 $action .= FormFacade::button('Excluir', ['class' => 'btn btn-danger btn-sm ml-1', 'onclick' => 'excluir("' . $roteExcluir . '")']);
 
                 return $action;
@@ -36,22 +36,12 @@ class ProdutoDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Produto $produto
+     * @param \App\Models\Venda $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Produto $produto)
+    public function query(Venda $model)
     {
-        // return $produto->newQuery();
-        return $produto->join('fabricantes', 'fabricantes.id', 'produtos.fabricante_id')
-                    ->select(
-                        'produtos.id',
-                        'produtos.descricao',
-                        'produtos.estoque',
-                        'produtos.preco',
-                        'produtos.created_at',
-                        'produtos.updated_at',
-                        'fabricantes.nome as fabricante',
-                    );
+        return $model->newQuery();
     }
 
     /**
@@ -62,7 +52,7 @@ class ProdutoDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('produto-table')
+                    ->setTableId('venda-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
@@ -91,10 +81,12 @@ class ProdutoDataTable extends DataTable
                   ->title('Ações')
                   ->addClass('text-center'),
             Column::make('id')->title('#'),
-            Column::make('descricao'),
-            Column::make('estoque'),
-            Column::make('preco'),
-            Column::make('fabricante')->name('fabricantes.nome'),
+            Column::make('forma_pagamento'),
+            Column::make('observacao'),
+            Column::make('desconto'),
+            Column::make('acrescimo'),
+            Column::make('total'),
+            Column::make('localidade'),
             Column::make('created_at')->title('Criado em'),
             Column::make('updated_at')->title('Atualizado em'),
         ];
@@ -107,6 +99,6 @@ class ProdutoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Produto_' . date('YmdHis');
+        return 'Venda_' . date('YmdHis');
     }
 }
