@@ -38,7 +38,7 @@
 
         <div class="form-group">
             {!! Form::label('email', 'Email') !!}
-            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+            {!! Form::email('email', null, ['class' => 'form-control']) !!}
 
             @error('email')
                 <small class="form-text text-danger">{{ $message }}</small>
@@ -47,7 +47,7 @@
 
         <div class="form-group">
             {!! Form::label('cpf', 'CPF') !!}
-            {!! Form::text('cpf', null, ['class' => 'form-control']) !!}
+            {!! Form::number('cpf', null, ['class' => 'form-control']) !!}
 
             @error('cpf')
                 <small class="form-text text-danger">{{ $message }}</small>
@@ -56,7 +56,7 @@
 
         <div class="form-group">
             {!! Form::label('cep', 'Cep') !!}
-            {!! Form::text('cep', null, ['class' => 'form-control']) !!}
+            {!! Form::number('cep', null, ['class' => 'form-control', 'onfocusout' => 'buscaCep()']) !!}
 
             @error('cep')
                 <small class="form-text text-danger">{{ $message }}</small>
@@ -72,22 +72,27 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            {!! Form::label('bairro', 'Bairro') !!}
-            {!! Form::text('bairro', null, ['class' => 'form-control']) !!}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('bairro', 'Bairro') !!}
+                    {!! Form::text('bairro', null, ['class' => 'form-control']) !!}
 
-            @error('bairro')
-                <small class="form-text text-danger">{{ $message }}</small>
-            @enderror
+                    @error('bairro')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
         </div>
+        <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('localidade', 'Localidade') !!}
+                    {!! Form::text('localidade', null, ['class' => 'form-control']) !!}
 
-        <div class="form-group">
-            {!! Form::label('localidade', 'Localidade') !!}
-            {!! Form::text('localidade', null, ['class' => 'form-control']) !!}
-
-            @error('localidade')
-                <small class="form-text text-danger">{{ $message }}</small>
-            @enderror
+                    @error('localidade')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
         </div>
 
     </div>
@@ -105,4 +110,25 @@
 @stop
 
 @section('js')
+<script>
+    function buscaCep () {
+        let cep = $('#cep').val()
+        // https://viacep.com.br/ws/cep/json/
+        // alert('https://viacep.com.br/ws/' + cep + '/json/')
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(( {data} ) => {
+                console.log(data)
+                $('#logradouro').val(data.logradouro)
+                $('#bairro').val(data.bairro)
+                $('#localidade').val(data.localidade)
+            })
+            .catch(() => {
+                Swal.fire(
+                    'Ops!',
+                    'Erro ao consultar CEP',
+                    'error'
+                )
+            })
+    }
+</script>
 @stop

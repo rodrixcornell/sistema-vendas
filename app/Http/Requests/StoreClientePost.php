@@ -24,7 +24,14 @@ class StoreClientePost extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required',
+            'telefone' => 'required',
+            'email' => 'required',
+            'cpf' => 'required',
+            'cep' => 'required',
+            'logradouro' => 'required',
+            'bairro' => 'required',
+            'localidade' => 'required',
         ];
     }
 }
